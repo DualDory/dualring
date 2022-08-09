@@ -425,7 +425,7 @@ full_entire_time_list = []
 algo2_sign_time_list = []
 algo2_verify_time_list = []
 algo2_entire_time_list = []
-for power in range (8):
+for power in range (12):
     power_of_2 = power + 1
     PK_num = 2 ** power_of_2
     time_trail = 1
@@ -513,9 +513,6 @@ print(algo2_entire_time_list)
 
 # writing to file
 with open("Ring Signature Time Analysis.txt", "w") as text_file:
-    text_file.write("Power of 2\tALGO2 SIGN\tALGO2 VERIFY\t ALGO2 TOTAL\tBASIC SIGN\tBASIC VERIFY\tBASIC TOTAL\tFULL SIGN\tFULL VERIFY\tFULL TOTAL\n")
+    text_file.write("Power of 2\tFULL SIGN\tFULL VERIFY\n")
     for i in range (len(basic_sign_time_list)):
-        text_file.write("%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (i + 1, algo2_sign_time_list[i], algo2_verify_time_list[i],
-                                                         algo2_entire_time_list[i], basic_sign_time_list[i], basic_verify_time_list[i],
-                                                         basic_entire_time_list[i], full_sign_time_list[i],
-                                                         full_verify_time_list[i], full_entire_time_list[i]))
+        text_file.write("%d\t%s\t%s\n" % (i + 1, full_sign_time_list[i] * 1000,  full_verify_time_list[i] * 1000))
